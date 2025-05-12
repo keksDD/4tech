@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bahisci Bey</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     html, body {
       margin: 0;
@@ -26,8 +27,15 @@
       background-size: cover;
       background-position: center;
       filter: blur(20px);
-      transform: scale(1.1); /* Чтобы края не обрезались после blur */
+      transform: scale(1.1);
       z-index: 0;
+      animation: backgroundAnimation 10s infinite alternate;
+    }
+
+    @keyframes backgroundAnimation {
+      0% { transform: scale(1.1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1.1); }
     }
 
     .content {
@@ -53,22 +61,45 @@
 
     h1 {
       margin-top: 20px;
-      color: white;
-      font-size: 1.5rem;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 20px;
-      border-radius: 12px;
-      animation: fadeIn 2s ease-out forwards;
+      color: #fff;
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #ff5f5f, 0 0 10px #ff5f5f, 0 0 20px #ff5f5f;
+      animation: glow 1.5s ease-in-out infinite alternate, fadeInText 2s ease-out forwards, slideUp 2s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #ff5f5f, 0 0 10px #ff5f5f;
+      }
+      to {
+        text-shadow: 0 0 10px #ff5f5f, 0 0 20px #ff5f5f, 0 0 30px #ff5f5f;
+      }
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
   <script>
     setTimeout(() => {
-      window.location.href = "https://images.unsplash.com/photo-1644442837865-7a8b7495acd3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // ← Вставь свою ссылку
+      document.body.style.transition = "opacity 1s ease-out";
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = "https://w0.peakpx.com/wallpaper/288/598/HD-wallpaper-anonimus-vendeta-thumbnail.jpg"; // ← Вставь свою ссылку
+      }, 1000);
     }, 4000);
   </script>
 </head>
